@@ -1,16 +1,51 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.Random;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        Random random = new Random();
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+
+        int redPlayerPosition = 0;
+        int bluePlayerPosition = 0;
+        int redRolls = 0;   // count of times red rolled
+        int blueRolls = 0;  // count of times blue rolled
+
+        while (redPlayerPosition < 21 && bluePlayerPosition < 21) {
+            // Red player's turn
+            int diceRollOne = random.nextInt(6) + 1;
+            int diceRollTwo = random.nextInt(6) + 1;
+            int totalRoll = diceRollOne + diceRollTwo;
+            redPlayerPosition += totalRoll;
+            redRolls++;  // increment red's roll count
+            System.out.println("Red player rolled " + diceRollOne + " and " + diceRollTwo + " for a total of " + totalRoll + ". New position: " + redPlayerPosition);
+
+            if (redPlayerPosition >= 21) {
+                System.out.println("Red player wins! They rolled " + redRolls + " times.");
+                break;
+            }
+
+            // Blue player's turn
+            diceRollOne = random.nextInt(6) + 1;
+            diceRollTwo = random.nextInt(6) + 1;
+            totalRoll = diceRollOne + diceRollTwo;
+            bluePlayerPosition += totalRoll;
+            blueRolls++;  // increment blue's roll count
+            System.out.println("Blue player rolled " + diceRollOne + " and " + diceRollTwo + " for a total of " + totalRoll + ". New position: " + bluePlayerPosition);
+
+            if (bluePlayerPosition >= 21) {
+                System.out.println("Blue player wins! They rolled " + blueRolls + " times.");
+                break;
+            }
         }
-        gdfdf
+
+
+        // roll dice 2x 6-sided dice
+
+        //move player who rolled
+        // record position 
+        // print out new position
+        // repeat for other player
+        // check if they've moved past or on position 21, stop game that player wins
+        // log stuff out
     }
 }
